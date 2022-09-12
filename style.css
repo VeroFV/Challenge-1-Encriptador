@@ -1,0 +1,9 @@
+body{
+    font-family: 'Source Sans Pro', sans-serif;
+    background: #A8DEF1;
+}
+
+textarea{
+    background-color: transparent;
+    border: 0px;
+}
