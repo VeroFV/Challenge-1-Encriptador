@@ -2,26 +2,103 @@ body{
     font-family: 'Source Sans Pro', sans-serif;
     background: #A8DEF1;
     color:#003d90;
+    padding: 20px;
+    margin: auto;
+}
+
+.encabezado{
+    padding: 10px;
+    width: 45%;
+    margin-left: 4%;
 }
 
 .encabezado img{
     width: 200px;
+    vertical-align: bottom;
+
 }
 
-.mensajedeentrada, .mensajedesalida{
-    outline: none;
-    background-color: transparent;
-    border: 0;
-    color:#003d90;
+.encabezado h1{
+    display: inline;
+    font-size: 40px;
+    margin-left: 20px;
+}
+
+.principal {
+    height: 80%;
+    margin-left: 8%;
+    padding: 3%;
+}
+
+.principal, .salida{
+    width: 45%;
+    display: inline-block;
+}
+
+.mensajedeentrada{
+    font-size: 30px;
+    height: 300px;
 }
 
 .mensajedeentrada::placeholder {
     color: #003d90;
 }
 
+.mensajedeentrada, .mensajedesalida{
+    resize: none;
+    background-color: transparent;
+    border: 0;
+    color:#003d90;
+}
+
+.mensajedeentrada:focus, .mensajedesalida:focus{
+    outline: none;
+}
+
+.botones{
+    padding: 1%;
+}
+
+button{
+    width: 45%;
+    padding: 15px 0;
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 10px;
+    transition: 1s all;
+    cursor:pointer;
+    border:none;
+}
+
+.botonoscuro{
+    color:#e6f6fc;
+    background:#003d90;
+}
+
+.botonclaro{
+    background:#0073ba;
+    color:white;
+    margin-left: 6%;
+}
+
+button:hover{
+    background:#04a3e3;
+    color:white;
+    border:none;
+}
+
 .salida{
-    width: 400px;
-    height: 500px;
+    width: 30%;
+    height: 90%;
     background: #e6f6fc;
-    border-radius: 32px;
+    border-radius: 25px;
+    position: absolute;
+    margin-top: -4%;
+    margin-left: 5%;
+    border: 0;
+}
+
+.mensajedesalida{
+    padding: 20px;
+    font-size: 20px;
 }
