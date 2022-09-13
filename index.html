@@ -7,6 +7,7 @@
         <link rel="stylesheet" href="style.css">
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/34eb2b0d7d.js" crossorigin="anonymous"></script>
     </head>
     <body>
         <header>
@@ -15,8 +16,20 @@
             </div>
         </header>
         <main>
-            <div class="entrada">
-                <textarea name="textarea" rows="10" cols="50">Ingrese texto aquí.</textarea>
+            <div class="principal">
+                <div class="entrada">
+                    <input type="text" name="mensaje" class="mensajedeentrada" placeholder="Ingrese texto aquí.">
+                </div>
+                <div class="botones">
+                    <p class="advertencia">
+                        <i class="fa-solid fa-circle-exclamation"></i> Solo letras minúsculas y sin acentos.
+                    </p>
+                    <button id="encriptar">Encriptar</button>
+                    <button id="desencriptar">Desencriptar</button>
+                </div>
+            </div>
+            <div class="salida">
+                <input type="text" name="salida" class="mensajedesalida" value="">
             </div>
         </main>
         <footer>

@@ -1,9 +1,27 @@
 body{
     font-family: 'Source Sans Pro', sans-serif;
     background: #A8DEF1;
+    color:#003d90;
 }
 
-textarea{
+.encabezado img{
+    width: 200px;
+}
+
+.mensajedeentrada, .mensajedesalida{
+    outline: none;
     background-color: transparent;
-    border: 0px;
+    border: 0;
+    color:#003d90;
+}
+
+.mensajedeentrada::placeholder {
+    color: #003d90;
+}
+
+.salida{
+    width: 400px;
+    height: 500px;
+    background: #e6f6fc;
+    border-radius: 32px;
 }
