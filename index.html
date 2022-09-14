@@ -8,6 +8,50 @@
         <link rel="icon" href="favicon.ico" type="image/x-icon" />
         <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/34eb2b0d7d.js" crossorigin="anonymous"></script>
+        <script>
+            var clave = ['ai', 'enter', 'imes', 'ober', 'ufat'];
+            var vocales = ['a', 'e', 'i', 'o', 'u'];
+            var resultado;
+
+            function encriptar(){
+                var text = document.getElementById("mensaje").value;
+                resultado = text.replace(/[aeiou]/g, function (x) {
+                for (var indice = 0; indice < vocales.length; indice++){
+                    if (x == vocales[indice]) {
+                        x = clave[indice];
+                        break;
+                };
+                };
+
+                return x;
+                });
+                console.log(resultado);
+
+                /*var resultadoactual = document.getElementById("salida").value;*/
+
+                
+            };
+
+            function limpiar(){
+                var output = document.querySelector(".salida");
+                var borrame = document.querySelector(".mensajedesalida");
+                output.removeChild(borrame);
+            }
+            
+            function mostrarresultado(){
+                var output = document.querySelector(".salida");
+                var panel = document.createElement('p');
+                panel.setAttribute('class', 'mensajedesalida');
+                panel.textContent = resultado;
+                output.appendChild(panel);
+            };
+
+            function usarencriptacion(){
+                encriptar();
+                limpiar();
+                mostrarresultado();
+            };
+        </script>
     </head>
     <body>
         <header>
@@ -19,18 +63,18 @@
         <main>
             <div class="principal">
                 <div class="entrada">
-                    <textarea name="mensaje" class="mensajedeentrada" placeholder="Ingrese texto aquí."></textarea>
+                    <textarea id="mensaje" class="mensajedeentrada" placeholder="Ingrese texto aquí."></textarea>
                 </div>
                 <div class="botones">
                     <p class="advertencia">
                         <i class="fa-solid fa-circle-exclamation"></i> Solo letras minúsculas y sin acentos.
                     </p>
-                    <button class="botonoscuro" id="encriptar">Encriptar</button>
-                    <button class="botonclaro" id="desencriptar">Desencriptar</button>
+                    <button id="encriptar" class="botonoscuro" onclick="usarencriptacion();">Encriptar</button>
+                    <button id="desencriptar" class="botonclaro">Desencriptar</button>
                 </div>
             </div>
             <div class="salida">
-                <textarea name="salida" class="mensajedesalida"></textarea>
+                <p class="mensajedesalida"></p>
             </div>
         </main>
         <footer>
