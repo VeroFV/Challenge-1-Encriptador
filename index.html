@@ -71,9 +71,13 @@
 
                 var botoncopiar = document.createElement("button");
                 botoncopiar.setAttribute("class", "botontransparente");
-                botoncopiar.setAttribute('onclick', 'CopyToClipboard("copiame")');
+                botoncopiar.setAttribute('onclick', 'copiar()');
                 botoncopiar.textContent = "Copiar";
                 caja.appendChild(botoncopiar);
+            };
+
+            function copiar(){
+                navigator.clipboard.writeText(resultado);
             };
 
             function usarencriptacion(){
@@ -87,20 +91,6 @@
                 };
             };
 
-            function CopyToClipboard(containerid) {
-                if (document.selection) {
-                    var range = document.body.createTextRange();
-                    range.moveToElementText(document.getElementById(containerid));
-                    range.select().createTextRange();
-                    document.execCommand("copy");
-                } else if (window.getSelection) {
-                    console.log("entra al 2do if");
-                    var range = document.createRange();
-                    range.selectNode(document.getElementById(containerid));
-                    window.getSelection().addRange(range);
-                    document.execCommand("copy");
-                }
-            }
 
         </script>
     </head>
