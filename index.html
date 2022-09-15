@@ -13,6 +13,28 @@
             var vocales = ['a', 'e', 'i', 'o', 'u'];
             var resultado;
 
+            function pedirmensaje(){
+                var output = document.querySelector(".salida");
+
+                var caja = document.createElement('div');
+                caja.setAttribute('class', 'cajasinmensaje');
+                output.appendChild(caja);
+
+                var sticker = document.createElement("img");
+                sticker.setAttribute("class", "perrin");
+                sticker.setAttribute("src", "imagenes/dog.gif");
+                sticker.setAttribute("alt", "Buscando mensaje");
+                caja.appendChild(sticker);
+
+                var h2 = document.createElement("h2");
+                h2.textContent = "Ningún mensaje fue encontrado.";
+                caja.appendChild(h2);
+
+                var h3 = document.createElement("h3");
+                h3.textContent = "Ingrese el texto que desee encriptar o desencriptar.";
+                caja.appendChild(h3);
+            };
+
             function encriptar(){
                 var text = document.getElementById("mensaje").value;
                 resultado = text.replace(/[aeiou]/g, function (x) {
@@ -27,30 +49,38 @@
                 });
                 console.log(resultado);
 
-                /*var resultadoactual = document.getElementById("salida").value;*/
-
-                
             };
 
             function limpiar(){
                 var output = document.querySelector(".salida");
-                var borrame = document.querySelector(".mensajedesalida");
+                var borrame = document.querySelector(".salida div");
                 output.removeChild(borrame);
             }
             
             function mostrarresultado(){
                 var output = document.querySelector(".salida");
+                var caja = document.createElement("div");
+                caja.setAttribute('class', 'cajaconmensaje');
+                output.appendChild(caja);
+                
                 var panel = document.createElement('p');
                 panel.setAttribute('class', 'mensajedesalida');
                 panel.textContent = resultado;
-                output.appendChild(panel);
+                caja.appendChild(panel);
             };
 
             function usarencriptacion(){
-                encriptar();
+                var text = document.getElementById("mensaje").value;
                 limpiar();
-                mostrarresultado();
+                if (/\S/.test(text)){
+                    encriptar();
+                    mostrarresultado();
+                } else {
+                    pedirmensaje();
+                };
+                
             };
+
         </script>
     </head>
     <body>
@@ -63,18 +93,23 @@
         <main>
             <div class="principal">
                 <div class="entrada">
-                    <textarea id="mensaje" class="mensajedeentrada" placeholder="Ingrese texto aquí."></textarea>
+                    <textarea id="mensaje" class="mensajedeentrada" placeholder="Ingrese texto aquí." onkeypress="return (event.charCode >= 97 && event.charCode <= 122 || event.charCode == 32 || event.charCode == 241)"></textarea>
                 </div>
                 <div class="botones">
                     <p class="advertencia">
                         <i class="fa-solid fa-circle-exclamation"></i> Solo letras minúsculas y sin acentos.
                     </p>
                     <button id="encriptar" class="botonoscuro" onclick="usarencriptacion();">Encriptar</button>
-                    <button id="desencriptar" class="botonclaro">Desencriptar</button>
+                    <button id="desencriptar" class="botonclaro" onclick="pedirmensaje();">Desencriptar</button>
                 </div>
             </div>
             <div class="salida">
-                <p class="mensajedesalida"></p>
+                <div class="cajasinmensaje">
+                    <img class="perrin" src="imagenes/dog.gif" alt="Buscando mensaje">
+                    <h2>Ningún mensaje fue encontrado.</h2>
+                    <h3>Ingrese el texto que desee encriptar o desencriptar.</h3>
+                </div>
+                <!---<p class="mensajedesalida"></p>-->
             </div>
         </main>
         <footer>
