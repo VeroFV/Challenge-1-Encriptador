@@ -65,8 +65,15 @@
                 
                 var panel = document.createElement('p');
                 panel.setAttribute('class', 'mensajedesalida');
+                panel.setAttribute('id', 'copiame');
                 panel.textContent = resultado;
                 caja.appendChild(panel);
+
+                var botoncopiar = document.createElement("button");
+                botoncopiar.setAttribute("class", "botontransparente");
+                botoncopiar.setAttribute('onclick', 'CopyToClipboard("copiame")');
+                botoncopiar.textContent = "Copiar";
+                caja.appendChild(botoncopiar);
             };
 
             function usarencriptacion(){
@@ -78,8 +85,22 @@
                 } else {
                     pedirmensaje();
                 };
-                
             };
+
+            function CopyToClipboard(containerid) {
+                if (document.selection) {
+                    var range = document.body.createTextRange();
+                    range.moveToElementText(document.getElementById(containerid));
+                    range.select().createTextRange();
+                    document.execCommand("copy");
+                } else if (window.getSelection) {
+                    console.log("entra al 2do if");
+                    var range = document.createRange();
+                    range.selectNode(document.getElementById(containerid));
+                    window.getSelection().addRange(range);
+                    document.execCommand("copy");
+                }
+            }
 
         </script>
     </head>
@@ -97,10 +118,10 @@
                 </div>
                 <div class="botones">
                     <p class="advertencia">
-                        <i class="fa-solid fa-circle-exclamation"></i> Solo letras minúsculas y sin acentos.
+                        <i class="fa-solid fa-circle-exclamation"></i> Solo admite letras minúsculas y sin acentos.
                     </p>
                     <button id="encriptar" class="botonoscuro" onclick="usarencriptacion();">Encriptar</button>
-                    <button id="desencriptar" class="botonclaro" onclick="pedirmensaje();">Desencriptar</button>
+                    <button id="desencriptar" class="botonclaro" onclick='CopyToClipboard("copiame");'>Desencriptar</button>
                 </div>
             </div>
             <div class="salida">
