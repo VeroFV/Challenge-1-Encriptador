@@ -38,17 +38,28 @@
             function encriptar(){
                 var text = document.getElementById("mensaje").value;
                 resultado = text.replace(/[aeiou]/g, function (x) {
-                for (var indice = 0; indice < vocales.length; indice++){
-                    if (x == vocales[indice]) {
-                        x = clave[indice];
-                        break;
-                };
-                };
+                    for (var indice = 0; indice < vocales.length; indice++){
+                        if (x == vocales[indice]) {
+                            x = clave[indice];
+                            break;
+                        };
+                    };
 
-                return x;
+                    return x;
                 });
-                console.log(resultado);
+            };
 
+            function desencriptar(){
+                var text =document.getElementById("mensaje").value;
+                resultado = text.replace(/(ai|enter|imes|ober|ufat)/g, function(x){
+                    for (var indice = 0; indice < clave.length; indice++){
+                        if (x == clave[indice]){
+                            x = vocales[indice];
+                            break;
+                        };
+                    };
+                    return x;
+                });
             };
 
             function limpiar(){
@@ -91,7 +102,16 @@
                 };
             };
 
-
+            function usardesencriptacion(){
+                var text =document.getElementById("mensaje").value;
+                limpiar();
+                if (/\S/.test(text)){
+                    desencriptar();
+                    mostrarresultado();
+                } else {
+                    pedirmensaje();
+                };
+            };
         </script>
     </head>
     <body>
@@ -111,7 +131,7 @@
                         <i class="fa-solid fa-circle-exclamation"></i> Solo admite letras minúsculas y sin acentos.
                     </p>
                     <button id="encriptar" class="botonoscuro" onclick="usarencriptacion();">Encriptar</button>
-                    <button id="desencriptar" class="botonclaro" onclick='CopyToClipboard("copiame");'>Desencriptar</button>
+                    <button id="desencriptar" class="botonclaro" onclick='usardesencriptacion()'>Desencriptar</button>
                 </div>
             </div>
             <div class="salida">
@@ -120,7 +140,6 @@
                     <h2>Ningún mensaje fue encontrado.</h2>
                     <h3>Ingrese el texto que desee encriptar o desencriptar.</h3>
                 </div>
-                <!---<p class="mensajedesalida"></p>-->
             </div>
         </main>
         <footer>
