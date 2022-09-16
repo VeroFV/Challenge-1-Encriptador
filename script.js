@@ -11,7 +11,7 @@ function pedirmensaje(){
 
     var sticker = document.createElement("img");
     sticker.setAttribute("class", "perrin");
-    sticker.setAttribute("src", "imagenes/dog.gif");
+    sticker.setAttribute("src", "https://i.imgur.com/xwRIZ0c.gif");
     sticker.setAttribute("alt", "Buscando mensaje");
     caja.appendChild(sticker);
 
