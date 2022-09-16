@@ -154,6 +154,38 @@ button:hover{
     margin: -20px auto 0;
 }
 
+a{
+    text-decoration: none;
+}
+
+.links{
+    background:
+      linear-gradient(
+        to right,
+        rgba(0, 61, 144, 1),
+        rgba(0, 65, 144, 1)
+      ),
+      linear-gradient(
+        to right,
+        rgba(255, 0, 0, 1),
+        rgb(255, 0, 255),
+        rgba(0, 100, 200, 1),
+        rgba(0, 255, 255, 1),
+        rgba(0, 128, 0, 1),
+        rgba(255, 255, 0, 1),
+        rgba(255, 0, 0, 1)
+    );
+    background-size: 100% 1px, 0 1px;
+    background-position: 100% 100%, 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 400ms;
+}
+
+.links:hover{
+    background-size: 0 1px, 100% 1px;
+    transform-origin: right;
+}
+
 @media (max-width:768px) or (max-device-width:768px){    
     body{
         padding: 20px 20px 10px 20px;
